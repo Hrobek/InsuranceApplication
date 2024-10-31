@@ -1,0 +1,69 @@
+﻿@model InsureApp.Models.Users
+
+@{
+	ViewData["Title"] = "Create";
+}
+
+<h1 class="text-center mb-3">Nový pojištěnec</h1>
+
+<div class="row justify-content-center">
+	<div class="col-md-8">
+		<form asp-action="Create" class="p-4 border rounded shadow-sm bg-light">
+			<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+			<div class="row">
+				<div class="col-md-6">
+					<div class="form-group mb-3">
+						<label asp-for="Name" class="form-label fw-bold">Jméno</label>
+						<input asp-for="Name" class="form-control" tabindex="1" placeholder="Jan" />
+						<span asp-validation-for="Name" class="text-danger"></span>
+					</div>
+					<div class="form-group mb-3">
+						<label asp-for="Email" class="form-label fw-bold">Email</label>
+						<input asp-for="Email" class="form-control" tabindex="3" placeholder="jannovak@gmail.com" />
+						<span asp-validation-for="Email" class="text-danger"></span>
+					</div>
+					<div class="form-group mb-3">
+						<label asp-for="Address" class="form-label fw-bold">Adresa</label>
+						<input asp-for="Address" class="form-control" tabindex="5" placeholder="Ve Svahu 3" />
+						<span asp-validation-for="Address" class="text-danger"></span>
+					</div>
+					<div class="form-group mb-3">
+						<label asp-for="Zip" class="form-label fw-bold">PSČ</label>
+						<input asp-for="Zip" class="form-control" tabindex="6" placeholder="100 00" />
+						<span asp-validation-for="Zip" class="text-danger"></span>
+					</div>
+				</div>
+
+				<div class="col-md-6">
+					<div class="form-group mb-3">
+						<label asp-for="Surname" class="form-label fw-bold">Příjmení</label>
+						<input asp-for="Surname" class="form-control" tabindex="2" placeholder="Novák" />
+						<span asp-validation-for="Surname" class="text-danger"></span>
+					</div>
+
+					<div class="form-group mb-3">
+						<label asp-for="Phone" class="form-label fw-bold">Telefon</label>
+						<input asp-for="Phone" class="form-control" tabindex="4" placeholder="731 584 972" />
+						<span asp-validation-for="Phone" class="text-danger"></span>
+					</div>
+
+					<div class="form-group mb-3">
+						<label asp-for="City" class="form-label fw-bold">Město</label>
+						<input asp-for="City" class="form-control" tabindex="5" placeholder="Praha 1" />
+						<span asp-validation-for="City" class="text-danger"></span>
+					</div>
+				</div>
+			</div>
+			<div class="form-group text-center">
+				<input type="submit" value="Vytvořit" class="btn btn-primary px-5" tabindex="7" />
+			</div>
+		</form>
+	</div>
+</div>
+
+<!--
+	<div>
+	<a asp-action="Index" class="btn btn-primary px-5">Zpět</a>
+	</div>
+-->
