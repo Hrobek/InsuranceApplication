@@ -7,11 +7,12 @@
 }
 
 <h1>Pojištění</h1>
-
-<div class="text-center mb-3">
-    <a asp-action="Create" class="btn btn-primary">Nové pojištění</a>
-</div>
-
+@if (User.IsInRole(UserRoles.Admin))
+{
+    <div class="text-center mb-3">
+        <a asp-action="Create" class="btn btn-primary">Nové pojištění</a>
+    </div>
+}
 <table class="table table-bordered">
     <thead>
         <tr>
@@ -30,10 +31,13 @@
                 <td>
                     @item.Description
                 </td>
+                @if (User.IsInRole(UserRoles.Admin))
+{
                 <td>
                     <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Odstranit</a>
                     <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning">Editovat</a>
                 </td>
+}
             </tr>
         }
     </tbody>

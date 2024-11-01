@@ -11,10 +11,12 @@ using X.PagedList;
 using X.PagedList.Mvc;
 using X.PagedList.Mvc.Core;
 using X.PagedList.Extensions;
+using Microsoft.AspNetCore.Authorization;
 
 namespace InsureApp.Controllers
 {
-    public class UsersController : Controller
+    [Authorize]
+	public class UsersController : Controller
     {
         private readonly ApplicationDbContext _context;
 

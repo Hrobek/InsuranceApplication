@@ -8,9 +8,11 @@ using Microsoft.EntityFrameworkCore;
 using InsureApp.Data;
 using InsureApp.Models;
 using X.PagedList.Extensions;
+using Microsoft.AspNetCore.Authorization;
 
 namespace InsureApp.Controllers
 {
+    [Authorize(Roles = UserRoles.Admin)]
     public class InsurancesController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -20,6 +22,7 @@ namespace InsureApp.Controllers
             _context = context;
         }
 
+        [AllowAnonymous]
         // GET: Insurances
         public async Task<IActionResult> Index(int? page)
         {
@@ -35,6 +38,7 @@ namespace InsureApp.Controllers
             return View(pagedList); // Vraťte paginovaný seznam
         }
 
+        [AllowAnonymous]
         // GET: Insurances/Details/5
         public async Task<IActionResult> Details(int? id)
         {
