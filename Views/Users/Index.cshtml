@@ -1,10 +1,15 @@
-﻿@using X.PagedList
+﻿@using System.Security.Claims
+@using X.PagedList
 @using X.PagedList.Mvc
 @using X.PagedList.Mvc.Core
 @model X.PagedList.IPagedList<InsureApp.Models.Users>
 
 @{
     ViewData["Title"] = "Pojištěnci";
+
+    var currentUserEmail = User.FindFirstValue(ClaimTypes.Email);
+    // Kontrola, zda je uživatel admin (pokud role existují)
+    var isAdmin = User.IsInRole(UserRoles.Admin);
 }
 
 <h1>Pojištěnci</h1>
@@ -26,14 +31,24 @@
         {
             <tr>
                 <td>
-                    <a asp-action="Details" asp-route-id="@item.Id">@item.Name @item.Surname</a>
+                    @if (isAdmin || item.Email == currentUserEmail)
+                    {
+                        <a asp-action="Details" asp-route-id="@item.Id">@item.Name @item.Surname</a>
+                    }
+                    else
+                    {
+                        @($"{item.Name} {item.Surname}")
+                    }
                 </td>
                 <td>
                     @item.Address, @item.City
                 </td>
                 <td>
-                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Odstranit</a>
-                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning">Editovat</a>
+                    @if (isAdmin || item.Email == currentUserEmail)
+                    {
+                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Odstranit</a>
+                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning">Editovat</a>
+                    }
                 </td>
             </tr>
         }
