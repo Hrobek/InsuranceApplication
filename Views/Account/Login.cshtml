@@ -4,9 +4,11 @@
     ViewData["Title"] = "Přihlášení";
 }
 
-<div class="row">
-    <div class="col-4">
-        <form class="d-flex flex-column gap-2" asp-route-returnUrl="@ViewData["ReturnUrl"]">
+<h1 class="text-center">Přihlásit se</h1>
+
+<div class="row justify-content-center">
+    <div class="col-md-4">
+        <form class="p-4 border rounded shadow-sm bg-light" asp-route-returnUrl="@ViewData["ReturnUrl"]">
             <div asp-validation-summary="All" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Email" class="form-label"></label>
@@ -22,10 +24,12 @@
                 <input asp-for="RememberMe" class="form-check-input">
                 <label asp-for="RememberMe" class="form-check-label"></label>
             </div>
-            <div class="form-group">
-                <button type="submit" class="clanky-tlacitko">Přihlásit se</button>
+            <div class="form-group text-center mb-2">
+                <button type="submit" class="btn btn-primary text-center">Přihlásit se</button>
             </div>
-            <a asp-action="Register" asp-route-returnUrl="@ViewData["ReturnUrl"]">Registrace</a>
+            <div class="text-center">
+            <a asp-action="Register" asp-route-returnUrl="@ViewData["ReturnUrl"]" class="btn btn-secondary">Registrace</a>
+            </div>
         </form>
     </div>
 </div>
